@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CITC</title>
+
+    <!-- Favicon -->
+
+    <!-- Frappe Gannt CSS -->
+    <link rel="stylesheet" href="css/frappe-gantt.min.css">
+
+    <!-- Bootstrap  CSS File-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!--Theme CSS File-->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!--Media CSS File-->
+    <link rel="stylesheet" href="css/media.css">
+
+</head>
+<body>
+
+    <header class="header__area">
+        <div class="header__content-wrapper">
+            <div class="logo_info">
+                <h1>CITC Project Health</h1>
+            </div>
+            <div class="logo">
+                <img src="./images/logo.png" class="img_fluid" alt="CITC">
+            </div>
+        </div>
+    </header>
+    
+
+    <main class="main__area">
+      <div class="row">
+        <div class="col-md-7">
+            <div class="project__details">
+              <div class="project__manager">
+                <h3>Project Manager</h3>
+                <p>Faris Abomela</p>
+              </div>
+              <div class="project__sponsor">
+                <h3>sponsor</h3>
+                <p>Maz Hussain</p>
+              </div>
+            </div>
+            <div class="project__chart">
+              <div class="bar__chart">
+                  <div style="width:250px; height:250px" class="risk_chart">
+                    <canvas id="risk_chart" width="250" height="250"></canvas>
+                  </div>
+                  <div style="width:250px; height:250px" class="issue_chart">
+                    <canvas id="issue_chart" width="250" height="250"></canvas>
+                  </div>
+              </div>
+              <div class="dougnutt__chart" style="width:300px; height:300px">
+                <canvas id="expenss" width="300" height="300"></canvas>
+              </div>
+            </div>
+            <div class="project__notes">
+              <div class="key___notes">
+                <div class="key__notes-header">
+                    <h3>Other Key Update and Notes</h3>
+                    <div class="key__notes-icon">
+                      <img src="./images/file-text.svg" class="img-fluid" alt="CITC">
+                    </div>
+                </div>
+                <div class="key__notes-content">
+                    <ul>
+                      <li>Note : Client is not satisfy with the awareness material</li>
+                      <li>Note : Team is still waiting for stakeholder comments</li>
+                      <li>Note : Risks need to bew reviewed</li>
+                    </ul>
+                </div>
+              </div>
+              <div class="dependency">
+                <div class="dependency__header">
+                  <h3>Dependency</h3>
+                  <div class="dependency__icon">
+                    <img src="./images/bubl.svg" class="img-fluid" alt="CITC">
+                  </div>
+                </div>
+                <div class="dependency__content">
+                    <ul>
+                      <li>There is an dependency on stakeholder's comments</li>
+                    </ul>
+                </div>
+              </div>
+              <div class="risk">
+                <div class="risk__header">
+                  <h3>Risk</h3>
+                  <div class="risk__icon">
+                    <img src="./images/warning.svg" class="img-fluid" alt="CITC">
+                  </div>
+                </div>
+                <div class="risk__content">
+                    <ul>
+                      <li>Risk : KPMG's invoice won't be paid fully</li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="project__condition">
+              <div class="project__health">
+                <h4>Project Health</h4>
+                <img src="./images/project health.png" alt="CITC" class="img-fluid">
+              </div>
+              <div class="project__progress">
+                <h4>Progress</h4>
+                <p>planned : 100%</p>
+                <div class="progress__wrapper">
+                  <div class="progress__bar">95%</div>
+                </div>
+              </div>
+            </div>
+            <div class="project__gannt-chart">
+              <svg id="gantt">
+              </svg>
+            </div>
+            <div class="change__mode">
+                  <div class="chart-controls">
+                    <p>Change Chart Timescale</p>
+                    <div class="button-cont">
+                        <button id="day-btn">
+                            Day
+                        </button>
+                
+                        <button id="week-btn">
+                            Week
+                        </button>
+                
+                        <button id="month-btn">
+                            Month
+                        </button>
+                    </div>
+                  </div>
+            </div>
+        </div>
+      </div>
+    </main>
+
+    <!--Script Files-->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.0.0-rc.1/chartjs-plugin-datalabels.min.js" integrity="sha512-+UYTD5L/bU1sgAfWA0ELK5RlQ811q8wZIocqI7+K0Lhh8yVdIoAMEs96wJAIbgFvzynPm36ZCXtkydxu1cs27w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./js/frappe-gantt.min.js"></script>
+    <script src="js/script.js"></script>
+
+    <script>
+      const ctx = document.getElementById('risk_chart');
+      const myChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+              labels: ['RISKS'],
+              datasets: [{
+                  label: 'M',
+                  barThickness: 50,
+                  data: [1, 1.25],
+                  backgroundColor: [
+                      '#065DB2'
+                  ],
+                  borderWidth: 1,
+                  datalabels: {
+                    anchor: 'end',
+                    align: 'top',
+                    formatter: Math.floor,
+                    font: {
+                      weight: 'bold'
+                    }
+                  }
+              }]
+          },
+          plugins: [ChartDataLabels],
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true,
+                      ticks:{
+                        display: false
+                      },
+                      grid:{
+                        display: false,
+                        drawTicks: false
+                      }
+                  }
+              },
+              plugins: {
+                legend: {
+                  position: 'top',
+                  align:'start',
+                  labels: {
+                    boxWidth: 12
+                  }
+                }
+              }
+          }
+      });
+    </script>
+    <script>
+      const ctx1 = document.getElementById('issue_chart');
+      const myChart1 = new Chart(ctx1, {
+          type: 'bar',
+          data: {
+              labels: ['ISSUES'],
+              datasets: [{
+                  label: 'M',
+                  barThickness: 50,
+                  data: [1, 1.25],
+                  backgroundColor: [
+                      '#065DB2'
+                  ],
+                  borderWidth: 1,
+                  datalabels: {
+                    anchor: 'end',
+                    align: 'top',
+                    formatter: Math.floor,
+                    font: {
+                      weight: 'bold'
+                    }
+                  }
+              }]
+          },
+          plugins: [ChartDataLabels],
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true,
+                      ticks:{
+                        display: false
+                      },
+                      grid:{
+                        display: false,
+                        drawTicks: false
+                      }
+                  }
+              },
+              plugins: {
+                legend: {
+                  position: 'top',
+                  align:'start',
+                  labels: {
+                    boxWidth: 12
+                  }
+                }
+              }
+          }
+      });
+    </script>
+    <script>
+      const ctx2 = document.getElementById('expenss').getContext('2d');;
+      const myChart2 = new Chart(ctx2, {
+          type: 'doughnut',
+          data: {
+            labels: [
+              'Comsumed',
+              'Remaining'
+            ],
+            datasets: [{
+              label: 'My First Dataset',
+              data: [300, 100],
+              backgroundColor: [
+                '#43B23C',
+                '#ADEAA4'
+              ],
+              hoverOffset: 4
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: "Expenses",
+                    color: "#000000",
+                    font: {
+                            family: "Poppis",
+                            size: 16,
+                            style: 'normal'
+                        },
+                    position:'top',
+                    align:'start',
+                    padding:{
+                      bottom:0,
+                      top:50
+                    }
+                },
+                legend: {
+                  position: 'right',
+                  align:'end',
+                  labels: {
+                    boxWidth: 12
+                  }
+                }
+            }
+          }
+          
+      });
+    </script>
+    
+    <script>
+      let tasks = [
+          {
+              id: 'Task 1',
+              name: 'Active 1',
+              start: '2022-01-22',
+              end: '2022-03-23',
+              progress: 100,
+          },
+          {
+              id: 'Task 2',
+              name: 'Active 2',
+              start: '2022-02-23',
+              end: '2022-04-05',
+              progress: 100
+          },
+          {
+              id: 'Task 3',
+              name: 'Active 3',
+              start: '2022-03-25',
+              end: '2022-05-27',
+              progress: 100
+          },
+          {
+              id: 'Task 4',
+              name: 'Active 4',
+              start: '2022-02-01',
+              end: '2022-03-22',
+              progress: 100
+          }
+        ]
+        let ganttChart = new Gantt("#gantt", tasks, {
+
+          header_height: 50,
+          column_width: 0,
+          step: 24,
+          view_modes: ['Quarter Day', 'Half Day', 'Day', 'Week', 'Month'],
+          bar_height: 20,
+          bar_corner_radius: 12,
+          arrow_curve: 5,
+          padding: 18,
+          view_mode: 'Month',
+          date_format: 'YYYY-MM-DD',
+          custom_popup_html: null,
+          today_highlight: true
+
+        });
+        document.querySelector(".chart-controls #day-btn").addEventListener("click", () => {
+            ganttChart.change_view_mode("Day");
+        })
+        document.querySelector(".chart-controls #week-btn").addEventListener("click", () => {
+            ganttChart.change_view_mode("Week");
+        })
+        document.querySelector(".chart-controls #month-btn").addEventListener("click", () => {
+            ganttChart.change_view_mode("Month");
+        })
+
+    </script>
+      
+</body>
+</html>

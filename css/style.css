@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+/* font-family: 'Philosopher', sans-serif;
+font-family: 'Poppins', sans-serif; */
+
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+html{
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+:root{
+    --blue:#053489;
+    --black:#000000;
+    --white:#FFFFFF;
+}
+
+p{
+    margin-bottom: 0;
+}
+/* Header Area Start */
+.header__area{
+    background-color: var(--blue);
+    padding: 24px 16px;
+}
+.header__content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo_info h1{
+    color: var(--white);
+}
+
+
+/* Header Area End */
+
+/* Main Area */
+.main__area{
+    padding:24px 16px;
+}
+.project__details{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 64px;
+    margin-bottom: 40px;
+}
+.project__manager,
+.project__sponsor{
+    flex-basis: 50%;
+    text-align: center;
+    border: 1px solid #e8e8e8;
+    border-radius: 12px 12px 0 0;
+}
+.project__manager h3,
+.project__sponsor h3{
+    font-size: 24px;
+    background: linear-gradient(to left, #0B7ED2,#0489D9);
+    color: var(--white);
+    padding: 8px 12px;
+    border-bottom: 1px solid #e8e8e8;
+    border-radius: 12px 12px 0 0;
+    margin-bottom: 0;
+}
+.project__manager p,
+.project__sponsor p{
+    font-size: 18px;
+    font-weight: 700;
+    padding: 12px 10px;
+}
+.risk_chart,
+.issue_chart{
+    position: relative;
+}
+.risk_chart::after,
+.issue_chart::after{
+    content:"";
+    position: absolute;
+    width:2px;
+    height: 3px;
+    background-color: #fff;
+    top: 0;
+    left: 0;
+}
+.project__chart{
+    display: flex;
+    column-gap: 40px;
+    margin-bottom: 40px;
+}
+.bar__chart{
+    display: flex;
+    flex-basis: 58.3333333%;
+    border-right: 1px solid var(--black);
+}
+.dougnutt__chart{
+    margin:  0 auto;
+}
+.dougnutt__chart canvas{
+    margin-top: -50px;
+}
+.project__notes{
+    display: flex;
+    column-gap: 24px;
+}
+.key___notes{
+    flex-basis: 46%;
+}
+.dependency,
+.risk{
+    flex-basis:27%;
+}
+.key__notes-header,
+.dependency__header,
+.risk__header{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: linear-gradient(to left, #0B7ED2,#0489D9);
+    color: var(--white);
+    border-radius: 12px 12px 0 0;
+    margin-bottom: 12px;
+}
+.key__notes-header h3,
+.dependency__header h3,
+.risk__header h3{
+    font-size:22px;
+    margin-bottom: 0;
+}
+.key__notes-header .key__notes-icon{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background:var(--white);
+    border-radius: 50%;
+}
+.dependency__icon,
+.risk__icon{
+    width:40px
+}
+.key__notes-content ul li,
+.dependency__content ul li,
+.risk__content ul li{
+    font-size:18px;
+}
+.project__condition{
+    display:flex;
+    column-gap: 40px;
+    padding-left: 100px;
+    margin-bottom: 60px;
+}
+.project__health,
+.project__progress{
+    flex-basis: 50%;
+}
+.project__health{
+    text-align: center;
+}
+.project__health h4,
+.project__progress h4{
+    text-align: center;
+    font-size:24px;
+    font-weight: 600;
+    border-bottom: 1px solid #040404;
+    padding-bottom: 8px;
+    margin-bottom: 40px;
+}
+.project__progress p{
+    text-align: right;
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+.project__progress .progress__wrapper{
+    width: 260px;
+    height:28px;
+    background:#D8D8D8;
+    margin-left: auto;
+    border-radius:40px;
+}
+.progress__bar{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    width: 90%;
+    height:100%;
+    background: linear-gradient(to left, #0B7ED2,#0489D9);
+    color: var(--white);
+    border-radius:40px;
+}
+.gantt-container {
+    width: 100%; 
+    margin: 0 auto;
+}
+#gantt{
+    height:300px;
+}
+.change__mode{
+    margin-top: 24px;
+}
+.chart-controls {
+    text-align: center;
+}
+.chart-controls > p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+.button-cont button {
+    border:0;
+    background: #053489;
+    color: var(--white);
+    padding:8px 20px;
+    border-radius: 4px;
+}
+/* Main Area */
